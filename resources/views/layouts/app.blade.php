@@ -12,7 +12,13 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite([
+            'resources/assets/css/style.bundle.css',
+            'resources/assets/plugins/global/plugins.bundle.js',
+            'resources/assets/js/scripts.bundle.js',
+            'resources/assets/js/custom/authentication/sign-in/general.js',
+            'resources/assets/plugins/global/plugins.bundle.css',
+            ])
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">

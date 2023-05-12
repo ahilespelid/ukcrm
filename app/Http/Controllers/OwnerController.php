@@ -18,7 +18,21 @@ class OwnerController extends Controller
 
     public function index(Request $request): View {
         if (auth()->user()->hasRole('owner')) {
-            return view('lk.dashboard', [
+            return view('lk.pages.lk', [
+                'user' => $request->user(),
+            ]);
+        }
+    }
+    public function indication(Request $request): View {
+        if (auth()->user()->hasRole('owner')) {
+            return view('lk.pages.indication', [
+                'user' => $request->user(),
+            ]);
+        }
+    }
+    public function charges(Request $request): View {
+        if (auth()->user()->hasRole('owner')) {
+            return view('lk.pages.charges', [
                 'user' => $request->user(),
             ]);
         }
