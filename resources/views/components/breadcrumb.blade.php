@@ -25,7 +25,7 @@
         @else
             <!--begin::Item-->
             <li class="breadcrumb-item text-muted">
-                <a href="{{ $item['link']  ? $item['link'] : '/' }}" class="text-muted text-hover-primary">{{ $item['name'] }}</a>
+                <a href="{{ $item['link']  ? route($item['link']) : 'home' }}" class="text-muted text-hover-primary">{{ $item['name'] }}</a>
             </li>
             <!--end::Item-->
         @endif

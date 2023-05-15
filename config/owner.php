@@ -20,5 +20,13 @@ return [
             'name' => 'Показания счетчиков',
             'link' => 'indication',
         ],
+        3 => [
+            'name' => 'Обратиться в УК',
+            'link' => 'message',
+        ],
+        4 => [
+            'name' => 'Реклама',
+            'link' => 'reklama',
+        ],
     ]
 ];

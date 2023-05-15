@@ -6,8 +6,34 @@
         array('title' => 'Settings', 'view' => 'account/settings'),
         // array('title' => 'Security', 'view' => ''),
     );
-@endphp
 
+    $page_title = 'Реклама';
+@endphp
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <!--begin::Toolbar-->
+    <div class="toolbar" id="kt_toolbar">
+        <!--begin::Container-->
+        <div id="kt_toolbar_container" class="container-fluid d-flex flex-stack">
+            <!--begin::Page title-->
+            <div data-kt-swapper="true" data-kt-swapper-mode="prepend" data-kt-swapper-parent="{default: '#kt_content_container', 'lg': '#kt_toolbar_container'}" class="page-title d-flex align-items-center flex-wrap me-3 mb-5 mb-lg-0">
+                <!--begin::Title-->
+                <h1 class="d-flex text-dark fw-bolder fs-3 align-items-center my-1">{{ $page_title }}</h1>
+                <!--end::Title-->
+                <!--begin::Separator-->
+                <span class="h-20px border-gray-300 border-start mx-4"></span>
+                <!--end::Separator-->
+                <!--begin::Breadcrumb-->
+                    <x-breadcrumb :items="[
+                            0 => ['name' => 'Главная', 'link' => 'admin'],
+                        ]"/>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Page title-->
+        </div>
+        <!--end::Container-->
+    </div>
+    <!--end::Toolbar-->
 <!--begin::Navbar-->
 <div class="card {{ $class }}">
     <div class="card-body pt-9 pb-0">
@@ -16,7 +42,7 @@
             <!--begin: Pic-->
             <div class="me-7 mb-4">
                 <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
-                    <img src="{{ Vite::asset('resources\assets\media\stock\600x400\img-5.jpg') }}" alt="image"/>
+                    <img src="{{ asset('assets\media\stock\600x400\img-5.jpg') }}" alt="image"/>
                     <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
                 </div>
             </div>
@@ -174,3 +200,4 @@
     </div>
 </div>
 <!--end::Navbar-->
+</div>

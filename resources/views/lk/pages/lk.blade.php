@@ -1,37 +1,175 @@
 @extends('lk.index')
 
 @section('content')
-
-    <main>
-        <div class="container">
-            <div class="px-4 pt-5 my-5 text-center border-bottom">
-                <h4 class="display-7">Лицевой счет: {{ '00945454' }}</h4>
-                <h4 class="display-7">{{ 'адреса дома, номер квартиры' }}</h4>
-                <div class="col-lg-6 mx-auto">
-                    <p class="lead mb-4">общая площадь: {{'общая площадь'}}</p>
-                    <p class="lead mb-4">число проживающих: {{'число проживающих'}}</p>
-                    <p class="lead mb-4">дата последнего платежа: {{'дата последнего платежа'}}</p>
-                    <p class="lead mb-4">плательщик ФИО: {{'плательщик ФИО'}}</p>
-                    <p class="lead mb-4"></p>
-                    <p class="lead mb-4">Заводской № ИПУ холодной воды: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ холодной воды дата окончания поверки: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ холодной воды последние показания дата: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ холодной воды последние показания: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">заводской № ИПУ горячей воды: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ горячей воды дата окончания поверки: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ горячей воды последние показания дата: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ горячей воды последние показания: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">заводской № ИПУ электричества день: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества день дата окончания поверки: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества день последние показания дата: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества день последние показания: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">заводской № ИПУ электричества ночь: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества ночь дата окончания поверки: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества ночь последние показания дата: {{'ЮЮЮ'}}</p>
-                    <p class="lead mb-4">ИПУ электричества ночь последние показания: {{'ЮЮЮ'}}</p>
+<main>
+    <form action="/" method="POST">
+    <div class="container px-5">
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label> Лицевой счет: </label>
+                    <input type="text" name="" class="form-control" value="{{ __('$lc') }}">
                 </div>
             </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label> Пользователь: </label>
+                    <input type="text" name="" class="form-control" value="{{ __('$user_name') }}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label> Адрес: </label>
+                    <input type="text" name="" class="form-control" value="{{ __('$user_addreses') }}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label> общая площадь: </label>
+                    <input type="text" name="types[ Электр.день]" class="form-control" value="{{ __('$sum') }}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label> число проживающих: </label>
+                    <input type="text" name="types[ Электр.день]" class="form-control" value="{{ __('$sum') }}">
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label> Состояние расчетов: </label>
+                    <input type="text" name="types[ Электр.день]" class="form-control" value="{{ __('$sum') }}">
+                </div>
+            </div>
+            <div class="col-12">
+                <hr>
+            </div>
         </div>
-    </main>
+
+    <div class="form-group">
+        <label> Плательщик ФИО: </label>
+        <input type="text" name="" class="form-control" value="">
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label> Заводской № ИПУ холодной воды: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата окончасния поверки: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Последние показания: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата передачи показаний: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label> Заводской № ИПУ горячей воды: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата окончасния поверки: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Последние показания: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата передачи показаний: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label> Заводской № ИПУ электричества (день): </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата окончасния поверки: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Последние показания: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата передачи показаний: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label> Заводской № ИПУ электричества (ночь): </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата окончасния поверки: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Последние показания: </label>
+                <input type="text" name="" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label> Дата передачи показаний: </label>
+                <input type="text" name="types[ Электр.день]" class="form-control" value="">
+            </div>
+        </div>
+        <div class="col-12">
+            <hr>
+        </div>
+    </div>
+
+</form>
+    </div>
+</main>
 
 @endsection

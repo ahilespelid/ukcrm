@@ -35,7 +35,7 @@
 								<a href="/" class="d-lg-none">
                                     @if (config('admin.mobile_menu.is_active'))
                                         @if (config('admin.mobile_menu.logo.link'))
-                                            <img alt="{{ config('admin.mobile_menu.logo.alt') }}" src="{{ Vite::asset(config('admin.mobile_menu.logo.link')) }}" class="h-30px" />
+                                            <img alt="{{ config('admin.mobile_menu.logo.alt') }}" src="{{ asset(config('admin.mobile_menu.logo.link')) }}" class="h-30px" />
                                         @elseif (config('admin.mobile_menu.logo.text'))
                                             {{ config('admin.mobile_menu.logo.text') }}
                                         @endif

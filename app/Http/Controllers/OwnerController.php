@@ -37,4 +37,18 @@ class OwnerController extends Controller
             ]);
         }
     }
+    public function reklama(Request $request): View {
+        if (auth()->user()->hasRole('owner')) {
+            return view('lk.pages.reklama', [
+                'user' => $request->user(),
+            ]);
+        }
+    }
+    public function message(Request $request): View {
+        if (auth()->user()->hasRole('owner')) {
+            return view('lk.pages.message', [
+                'user' => $request->user(),
+            ]);
+        }
+    }
 }

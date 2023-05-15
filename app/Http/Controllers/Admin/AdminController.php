@@ -62,6 +62,99 @@ class AdminController extends Controller
         }
     }
 
+    public static function objects()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.objects.lists', [
+                'items' => '', //из модели objects
+            ]);
+        }
+    }
+
+    public static function accruals()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.accruals.list', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели payments
+            ]);
+        }
+    }
+
+    public static function payments()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.payments.list', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели payments
+            ]);
+        }
+    }
+
+    public static function import()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.file-manager.import', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели import
+            ]);
+        }
+    }
+
+    public static function export()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.file-manager.export', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели export
+            ]);
+        }
+    }
+
+    public static function iesetting()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.file-manager.settings', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели iesettings
+            ]);
+        }
+    }
+
+    public static function company()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.company.index', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели company
+            ]);
+        }
+    }
+
+    public static function settings()
+    {
+        if (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('manager')) {
+            return view('admin.pages.settings.index', [
+                'items' => [
+                    0 => [''],
+                    1 => [''],
+                ], //из модели settings
+            ]);
+        }
+    }
+
     public static function getSvgIcon($path, $class = '') {
         $path = str_replace('\\', '/', trim($path));
         if ( ! file_exists($path)) {

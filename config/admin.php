@@ -233,18 +233,19 @@ return [
         ],
         3 => [
             'name' => 'Объекты',
-            'link' => 'homes',
+            'link' => 'objects',
             'type' => 'dropdown',
             'parent' => true,
             'icon' => 'map008',
             'dropdown' => [
                 0 => [
                     'name' => 'Группы',
-                    'link' => 'admin',
+                    'link' => 'objects',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                /*
                 1 => [
                     'name' => 'Статистика',
                     'link' => 'admin',
@@ -252,6 +253,7 @@ return [
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                */
             ],
         ],
         4 => [
@@ -268,6 +270,7 @@ return [
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                /*
                 1 => [
                     'name' => 'Статистика',
                     'link' => 'reklama',
@@ -275,11 +278,12 @@ return [
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                */
             ],
         ],
         5 => [
             'name' => 'Начисления',
-            'link' => 'admin',
+            'link' => 'accruals',
             'type' => 'item',
             'parent' => false,
             'icon' => 'fin007',
@@ -287,7 +291,7 @@ return [
         ],
         6 => [
             'name' => 'Платежи',
-            'link' => 'admin',
+            'link' => 'payments',
             'type' => 'item',
             'parent' => false,
             'icon' => 'fin002',
@@ -302,27 +306,28 @@ return [
             'dropdown' => [
                 0 => [
                     'name' => 'Импорт',
-                    'link' => 'admin',
+                    'link' => 'fm_import',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
                 1 => [
                     'name' => 'Экспорт',
-                    'link' => 'admin',
+                    'link' => 'fm_export',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
                 2 => [
                     'name' => 'Настройки',
-                    'link' => 'admin',
+                    'link' => 'fm_setting',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
             ],
         ],
+        /*
         8 => [
             'name' => 'Обращения',
             'link' => 'admin',
@@ -331,6 +336,7 @@ return [
             'icon' => 'com011',
             'dropdown' => '',
         ],
+        */
         9 => [
             'name' => 'separator',
             'link' => 'separator',
@@ -342,7 +348,7 @@ return [
         ],
         11 => [
             'name' => 'Компания',
-            'link' => 'admin',
+            'link' => 'company',
             'type' => 'item',
             'parent' => false,
             'icon' => 'ecm010',
@@ -350,7 +356,7 @@ return [
         ],
         12 => [
             'name' => 'Общие',
-            'link' => 'admin',
+            'link' => 'settings',
             'type' => 'item',
             'parent' => false,
             'icon' => 'cod001',
@@ -361,7 +367,7 @@ return [
     'mobile_menu' => [
         'is_active' => true,
         'logo' => [
-            'link' => 'resources/assets/media/uk/logo-uk.gif',
+            'link' => 'assets/media/uk/logo-uk.gif',
             'alt' => 'Img:logo',
             'text' => 'УК',
         ],
@@ -376,7 +382,7 @@ return [
             ],
         ],
         'user' => [
-            'btn_img' => 'resources/assets/media/icons/duotune/communication/com006.svg',
+            'btn_img' => 'assets/media/icons/duotune/communication/com006.svg',
         ],
     ],
 
@@ -388,5 +394,15 @@ return [
                 'link' => '',
             ],
         ],
+    ],
+
+    'rename' => [
+        'date' => 'Дата',
+        'dates' => 'Период',
+        'lc' => 'Лицевой счет',
+        'user' => 'Пользователь',
+        'users' => 'Пользователи',
+        'accrual' => 'Начислено',
+        'to-pay' => 'К оплате',
     ],
 ];

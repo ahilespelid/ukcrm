@@ -4,7 +4,7 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="/">
-            <img alt="Img:logo" src="{{ Vite::asset('resources/assets/media/uk/logo-uk.gif') }}" class="h-45px logo" />
+            <img alt="Img:logo" src="{{ asset('assets/media/uk/logo-uk.gif') }}" class="h-45px logo" />
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->
