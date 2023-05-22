@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('id_group_houses'); //id группы домов
-            //$table->foreign('id_group_houses')->references('id')->on('group_houses'); //ссылка на id группы домов
             $table->string('region')->nullable(); //регион
             $table->string('city')->nullable(); //город/поселок
             $table->string('street')->nullable(); //улица

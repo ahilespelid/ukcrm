@@ -13,15 +13,9 @@ return new class extends Migration
     {
         Schema::create('licevoy_stchet', function (Blueprint $table) { //лицевой счет
             $table->id();
-            $table->integer('user_id')->nullable(); //id пользователя
-            //$table->foreign('user_id')->references('id')->on('users'); //ссылка на id пользователя
-            $table->integer('group_houses_id')->nullable(); //id группы домов
-            //$table->foreign('group_houses_id')->references('id')->on('group_houses'); //ссылка на id группы домов
             $table->string('personal_number_symbol')->nullable(); //символьный номер лицевого счета
-            $table->string('personal_number')->unique(); //номер лицевого счета
+            $table->string('personal_number')->nullable(); //номер лицевого счета
             $table->timestamps(); //created_at и updated_at
-            $table->text('addresses_id')->nullable(); //id адреса дома
-            //$table->foreign('addresses_id')->references('id')->on('addresses'); //ссылка на id адреса дома
             $table->string('apartment')->nullable(); //номер квартиры
             $table->string('total_area')->nullable(); //общая площадь
             $table->integer('total_persons')->nullable(); //число проживающих

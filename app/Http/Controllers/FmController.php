@@ -50,12 +50,7 @@ class FmController extends Controller
             return redirect('/file-manager/import')->with('error', 'Не выбран объект для загрузки') ;
         }
 
-        $array = Excel::toArray(new $class, request()->file('file'));
-        return dump($array);
-
-        /*
         Excel::import(new $class, request()->file('file'));
         return redirect('/file-manager/import')->with('status', 'Экспорт данных успешно завершен.');
-        */
     }
 }
