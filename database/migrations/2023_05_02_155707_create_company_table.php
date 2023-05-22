@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('company', function (Blueprint $table) { //данные управляющей компании
             $table->id();
-            $table->string('name');
-            $table->string('number_rog'); //номер организации
-            $table->string('email')->unique();
-            $table->string('phone'); //основной номер телефона организации
-            $table->string('phone_city'); //городской номер телефона организации
-            $table->string('inn'); //инн организации
-            $table->string('kpp'); //кпп организации
-            $table->string('ogrn'); //огрн организации
-            $table->string('rs'); //расчетный счет организации
-            $table->string('ks'); //курс/счет организации
-            $table->string('bank'); //наименование банка организации
-            $table->string('bik'); //бик банка организации
-            $table->string('address'); //фактический адрес организации
-            $table->string('law_address'); //юридический адрес организации
+            $table->string('name')->nullable();
+            $table->string('number_rog')->nullable(); //номер организации
+            $table->string('email')->nullable();
+            $table->string('phone')->nullable(); //основной номер телефона организации
+            $table->string('phone_city')->nullable(); //городской номер телефона организации
+            $table->string('inn')->nullable(); //инн организации
+            $table->string('kpp')->nullable(); //кпп организации
+            $table->string('ogrn')->nullable(); //огрн организации
+            $table->string('rs')->nullable(); //расчетный счет организации
+            $table->string('ks')->nullable(); //курс/счет организации
+            $table->string('bank')->nullable(); //наименование банка организации
+            $table->string('bik')->nullable(); //бик банка организации
+            $table->string('address')->nullable(); //фактический адрес организации
+            $table->string('law_address')->nullable(); //юридический адрес организации
             $table->timestamps();
         });
     }

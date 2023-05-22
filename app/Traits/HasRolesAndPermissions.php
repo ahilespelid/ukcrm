@@ -3,6 +3,8 @@
 namespace App\Traits;
 use App\Models\Role;
 use App\Models\Permission;
+use App\Models\User;
+
 trait HasRolesAndPermissions
 {
     /**
@@ -12,6 +14,15 @@ trait HasRolesAndPermissions
     {
         return $this->belongsToMany(Role::class,'users_roles');
     }
+
+    /**
+     * @return mixed
+     */
+    public function users()
+    {
+        return $this->morphMany(User::class,'users_roles');
+    }
+
     /**
      * @return mixed
      */

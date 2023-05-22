@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('id_group_houses'); //id группы домов
             //$table->foreign('id_group_houses')->references('id')->on('group_houses'); //ссылка на id группы домов
-            $table->string('region'); //регион
-            $table->string('city'); //город/поселок
-            $table->string('street'); //улица
-            $table->string('house');  //номер дома
-            $table->boolean('active');
+            $table->string('region')->nullable(); //регион
+            $table->string('city')->nullable(); //город/поселок
+            $table->string('street')->nullable(); //улица
+            $table->string('house')->nullable();  //номер дома
+            $table->boolean('active')->nullable();
             $table->timestamps();
         });
     }

@@ -58,8 +58,7 @@
                         <div class="d-flex flex-column">
                             <h2 class="mb-1">Настройки</h2>
                             <div class="text-muted fw-bolder">
-                                2.6 GB
-                                <span class="mx-3">|</span>758 items
+                                <span class="mx-3"></span>
                             </div>
                         </div>
                         <!--end::Title-->
@@ -73,17 +72,17 @@
                         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bold flex-nowrap">
                             <!--begin::Nav item-->
                             <li class="nav-item">
-                                <a class="nav-link text-active-primary me-6 active" href="{{ route('fm_import') }}">Импорт</a>
+                                <a class="nav-link text-active-primary me-6 active" href="{{ route('fm_import') }}">{{__('Импорт')}}</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item">
-                                <a class="nav-link text-active-primary me-6" href="{{ route('fm_export') }}">Экспорт</a>
+                                <a class="nav-link text-active-primary me-6" href="{{ route('fm_export') }}">{{__('Экспорт')}}</a>
                             </li>
                             <!--end::Nav item-->
                             <!--begin::Nav item-->
                             <li class="nav-item">
-                                <a class="nav-link text-active-primary me-6" href="{{ route('fm_setting') }}">Настройки</a>
+                                <a class="nav-link text-active-primary me-6" href="{{ route('fm_setting') }}">{{__('Настройки')}}</a>
                             </li>
                             <!--end::Nav item-->
                         </ul>
@@ -93,6 +92,14 @@
                 <!--end::Card body-->
             </div>
             <!--end::Card-->
+            @error('error')
+                <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror
+            @if(session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <!--begin::Card-->
             <div class="card card-flush">
                 <!--begin::Card header-->
@@ -107,7 +114,8 @@
                 <!--begin::Card body-->
                 <div class="card-body">
                     <!--begin::Form-->
-                    <form class="form" id="kt_file_manager_settings">
+                    <form class="form" id="kt_file_manager_settings" action="{{ route('import.post') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <!--begin::Input group-->
                         <div class="fv-row row mb-15">
                             <!--begin::Col-->
@@ -120,13 +128,13 @@
                             <!--begin::Col-->
                             <div class="col-md-9">
                                 <!--begin::Input-->
-                                <select name="language" aria-label="Select a Language" data-control="select2" data-placeholder="Укажите данные для выгрузки" class="form-select mb-2">
+                                <select name="table" aria-label="Select a Language" data-control="select2" data-placeholder="Укажите данные для загрузки" class="form-select mb-2" required>
                                     <option></option>
-                                    <option value="owner">Пользователи</option>
-                                    <option value="accruals">Объекты</option>
-                                    <option value="payments">Реклама</option>
-                                    <option value="payments">Начисления</option>
-                                    <option value="payments">Платежи</option>
+                                    <option value="User">Пользователи</option>
+                                    <option value="Houses">Объекты</option>
+                                    <option value="Reklama">Реклама</option>
+                                    <option value="Accruals">Начисления</option>
+                                    <option value="Payments">Платежи</option>
                                 </select>
                                 <!--end::Input-->
                             </div>
@@ -135,6 +143,8 @@
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="fv-row">
+                            <input type="file" name="file" class="form-control" required>
+                            {{--
                             <!--begin::Dropzone-->
                             <div class="dropzone" id="kt_dropzonejs_example_1">
                                 <!--begin::Message-->
@@ -144,14 +154,17 @@
                                     <!--end::Icon-->
 
                                     <!--begin::Info-->
+
                                     <div class="ms-4">
                                         <h3 class="fs-5 fw-bolder text-gray-900 mb-1">Перетащите файлы сюда или нажмите, чтобы загрузить.</h3>
                                         <span class="fs-7 fw-bold text-gray-400">Загрузить до 10 файлов.</span>
                                     </div>
+
                                     <!--end::Info-->
                                 </div>
                             </div>
                             <!--end::Dropzone-->
+                            --}}
                         </div>
                         <!--end::Input group-->
                         <!--begin::Action buttons-->
@@ -161,7 +174,7 @@
                                 <button type="button" class="btn btn-light me-3">Отменить</button>
                                 <!--end::Cancel-->
                                 <!--begin::Button-->
-                                <button type="button" class="btn btn-primary" id="kt_file_manager_settings_submit">
+                                <button type="submit" class="btn btn-primary" id="kt_file_manager_settings_submit">
                                     <span class="indicator-label">Сохранить</span>
                                     <span class="indicator-progress">Пожалуйста подождите...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

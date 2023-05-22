@@ -23,7 +23,12 @@
                 $column_name[] = $k;
             }
             else {
-                continue;
+                if($k == 'role') {
+                    $column_name[] = $k;
+                }
+                else {
+                    continue;
+                }
             }
         }
     }
@@ -34,13 +39,6 @@
         }
     }
 @endphp
-<pre>
-    @php
-       //var_dump($items[0]['name']);
-        //print_r($column_name)
-    @endphp
-</pre>
-
 <!--begin::Table-->
 <table class="table align-middle table-row-dashed fs-6 gy-5" id="{{ $id }}">
     <!--begin::Table head-->
@@ -75,10 +73,21 @@
                 </td>
                 <!--end::Checkbox-->
                 @foreach ($column_name as $val)
-                    <!--begin::Date=-->
-                    <td>{{ $item[$val] }}</td>
-                    <!--end::Date=-->
+                    @if($val == 'role')
+                        <!--begin::{{$val}}=-->
+                        <td>
+                            @foreach ( $item->roles as $role )
+                                {{ $role->name }}
+                            @endforeach
+                        </td>
+                        <!--end::{{$val}}=-->
+                    @else
+                        <!--begin::{{$val}}=-->
+                        <td>{{ $item[$val] }}</td>
+                        <!--end::{{$val}}=-->
+                    @endif
                 @endforeach
+
                 @isset($data['button'])
                     <td class="text-end min-w-100px">
                         <x-dynamic-component :component="$data['button']" class="mt-4" />

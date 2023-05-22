@@ -1,5 +1,5 @@
 <div class="menu-item" >
-    <a class="menu-link" href="{{ route($item['link']) }}">
+    <a class="menu-link" href="{{ url($item['link']) }}">
         @if($item['icon'] == 'bullet')
             <span class="menu-bullet">
                 <span class="bullet bullet-dot"></span>

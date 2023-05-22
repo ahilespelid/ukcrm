@@ -35,6 +35,7 @@
     <div id="kt_content_container" class="container-xxl">
         <!--begin::Row-->
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 g-xl-9">
+            @foreach ($data['roles'] as $role)
             <!--begin::Col-->
             <div class="col-md-4">
                 <!--begin::Card-->
@@ -43,21 +44,30 @@
                     <div class="card-header">
                         <!--begin::Card title-->
                         <div class="card-title">
-                            <h2>Администратор</h2>
+                            <h2>{{ $role->name }}</h2>
                         </div>
                         <!--end::Card title-->
                     </div>
                     <!--end::Card header-->
                     <!--begin::Card body-->
                     <div class="card-body pt-1">
+                        @php
+                            foreach ($role->users as $value) {
+                                $countUsers[] = $value->name;
+                            }
+                            $role->users['coun_users'] = count($countUsers);
+                            unset($countUsers);
+                        @endphp
                         <!--begin::Users-->
-                        <div class="fw-bolder text-gray-600 mb-5">Пользователей: 1</div>
+                        <div class="fw-bolder text-gray-600 mb-5">Пользователей: {{ $role->users['coun_users'] }}</div>
                         <!--end::Users-->
                         <!--begin::Permissions-->
                         <div class="d-flex flex-column text-gray-600">
+                            @foreach ($data['permissions'] as $perm)
                             <div class="d-flex align-items-center py-2">
-                                <span class="bullet bg-primary me-3"></span>Все права
+                                <span class="bullet bg-primary me-3"></span>{{ $perm->name }}
                             </div>
+                            @endforeach
                         </div>
                         <!--end::Permissions-->
                     </div>
@@ -72,82 +82,8 @@
                 <!--end::Card-->
             </div>
             <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-md-4">
-                <!--begin::Card-->
-                <div class="card card-flush h-md-100">
-                    <!--begin::Card header-->
-                    <div class="card-header">
-                        <!--begin::Card title-->
-                        <div class="card-title">
-                            <h2>Менеджер</h2>
-                        </div>
-                        <!--end::Card title-->
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body pt-1">
-                        <!--begin::Users-->
-                        <div class="fw-bolder text-gray-600 mb-5">Пользователей: 1</div>
-                        <!--end::Users-->
-                        <!--begin::Permissions-->
-                        <div class="d-flex flex-column text-gray-600">
-                            <div class="d-flex align-items-center py-2">
-                            <span class="bullet bg-primary me-3"></span>Импорт документов</div>
-                            <div class="d-flex align-items-center py-2">
-                            <span class="bullet bg-primary me-3"></span>Экспорт документов</div>
-                        </div>
-                        <!--end::Permissions-->
-                    </div>
-                    <!--end::Card body-->
-                    <!--begin::Card footer-->
-                    <div class="card-footer flex-wrap pt-0">
-                        <a href="../../demo1/dist/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">Просмотреть</a>
-                        <button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Изменить</button>
-                    </div>
-                    <!--end::Card footer-->
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Col-->
-            <!--begin::Col-->
-            <div class="col-md-4">
-                <!--begin::Card-->
-                <div class="card card-flush h-md-100">
-                    <!--begin::Card header-->
-                    <div class="card-header">
-                        <!--begin::Card title-->
-                        <div class="card-title">
-                            <h2>Пользователь</h2>
-                        </div>
-                        <!--end::Card title-->
-                    </div>
-                    <!--end::Card header-->
-                    <!--begin::Card body-->
-                    <div class="card-body pt-1">
-                        <!--begin::Users-->
-                        <div class="fw-bolder text-gray-600 mb-5">Пользователей: 1</div>
-                        <!--end::Users-->
-                        <!--begin::Permissions-->
-                        <div class="d-flex flex-column text-gray-600">
-                            <div class="d-flex align-items-center py-2">
-                            <span class="bullet bg-primary me-3"></span>Доступ в личный кабинет</div>
-                            <div class="d-flex align-items-center py-2">
-                            <span class="bullet bg-primary me-3"></span>Управление персональным аккаунтом</div>
-                        </div>
-                        <!--end::Permissions-->
-                    </div>
-                    <!--end::Card body-->
-                    <!--begin::Card footer-->
-                    <div class="card-footer flex-wrap pt-0">
-                        <a href="../../demo1/dist/apps/user-management/roles/view.html" class="btn btn-light btn-active-primary my-1 me-2">Просмотреть</a>
-                        <button type="button" class="btn btn-light btn-active-light-primary my-1" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">Изменить</button>
-                    </div>
-                    <!--end::Card footer-->
-                </div>
-                <!--end::Card-->
-            </div>
-            <!--end::Col-->
+            @endforeach
+
             <!--begin::Add new card-->
             <div class="ol-md-4">
                 <!--begin::Card-->

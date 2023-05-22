@@ -34,6 +34,8 @@
                 <div class="row g-7">
                     <!--begin::Contact groups-->
                     <div class="col-lg-6 col-xl-3">
+                        <x-card-groups :items="$data['houses']" />
+                        {{--
                         <x-card-groups :items="
                             [
                                 0 => [
@@ -52,6 +54,7 @@
                                     'count' => 3,
                                 ],
                             ]"/>
+                            --}}
                     </div>
                     <!--end::Contact groups-->
                     <!--begin::Search-->

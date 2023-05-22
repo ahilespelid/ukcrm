@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->string('users_id'); //id пользователя
+            $table->string('users_id')->nullable(); //id пользователя
             //$table->foreign('users_id')->references('id')->on('users'); //ссылка на id пользователя
-            $table->string('sum'); //сумма
+            $table->string('sum')->nullable(); //сумма
             $table->timestamps(); //даты created_at и updated_at
-            $table->boolean('active');
+            $table->boolean('active')->nullable();
         });
     }
 

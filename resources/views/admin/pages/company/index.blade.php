@@ -20,7 +20,7 @@
                 <!--end::Separator-->
                 <!--begin::Breadcrumb-->
                 <x-breadcrumb :items="[
-                    0 => ['name' => 'Главная', 'link' => '/'],
+                    0 => ['name' => 'Главная', 'link' => 'admin'],
                 ]"/>
                 <!--end::Breadcrumb-->
             </div>
@@ -44,6 +44,7 @@
                 <!--end::Card header-->
                 <!--begin::Form-->
                 <form id="kt_project_settings_form" class="form">
+                    @csrf
                     <!--begin::Card body-->
                     <div class="card-body p-9">
                         <!--begin::Row-->
@@ -97,7 +98,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="name" value="{{ old(__('$name')) }}" />
+                                <input type="text" class="form-control form-control-solid" name="name" value="{{ $data->name }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -110,7 +111,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="name" value="{{ __('$number_rog') }}" />
+                                <input type="text" class="form-control form-control-solid" name="name" value="{{ $data->number_rog }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -123,7 +124,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$ogrn') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->ogrn }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -136,7 +137,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$inn') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->inn }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -149,7 +150,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$kpp') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->kpp }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -172,7 +173,7 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <input class="form-control form-control-solid ps-12" name="date" placeholder="Укажите дату регистрации оорганизации" id="kt_datepicker_1" />
+                                    <input class="form-control form-control-solid ps-12" name="date" placeholder="Укажите дату регистрации оорганизации" id="kt_datepicker_1" value="{{ $data->date }}"/>
                                 </div>
                             </div>
                             <!--begin::Col-->
@@ -187,7 +188,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$rs') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->rs }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -200,7 +201,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$ks') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->ks }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -213,7 +214,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$bank') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->bank }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -226,7 +227,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$bik') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->bik }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -239,7 +240,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$address') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->address }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -252,7 +253,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$law_address') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->law_address }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -265,7 +266,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$phone') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->phone }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -278,7 +279,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$phone_city') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->phone_city }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -291,7 +292,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <input type="text" class="form-control form-control-solid" name="type" value="{{ __('$email') }}" />
+                                <input type="text" class="form-control form-control-solid" name="type" value="{{ $data->email }}" />
                             </div>
                         </div>
                         <!--end::Row-->
@@ -304,7 +305,7 @@
                             <!--end::Col-->
                             <!--begin::Col-->
                             <div class="col-xl-9 fv-row">
-                                <textarea name="description" class="form-control form-control-solid h-100px">{{ __('$description') }}</textarea>
+                                <textarea name="description" class="form-control form-control-solid h-100px">{{ $data->description }}</textarea>
                             </div>
                             <!--begin::Col-->
                         </div>

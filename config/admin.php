@@ -217,14 +217,14 @@ return [
             'dropdown' => [
                 0 => [
                     'name' => 'Список',
-                    'link' => 'users',
+                    'link' => 'admin/users',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
                 1 => [
                     'name' => 'Роли и права',
-                    'link' => 'roles',
+                    'link' => 'admin/users/roles',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
@@ -240,7 +240,7 @@ return [
             'dropdown' => [
                 0 => [
                     'name' => 'Группы',
-                    'link' => 'objects',
+                    'link' => 'admin/objects',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
@@ -265,7 +265,7 @@ return [
             'dropdown' => [
                 0 => [
                     'name' => 'Настройки',
-                    'link' => 'reklama',
+                    'link' => 'admin/reklama',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
@@ -283,7 +283,7 @@ return [
         ],
         5 => [
             'name' => 'Начисления',
-            'link' => 'accruals',
+            'link' => 'admin/accruals',
             'type' => 'item',
             'parent' => false,
             'icon' => 'fin007',
@@ -291,7 +291,7 @@ return [
         ],
         6 => [
             'name' => 'Платежи',
-            'link' => 'payments',
+            'link' => 'admin/payments',
             'type' => 'item',
             'parent' => false,
             'icon' => 'fin002',
@@ -306,25 +306,27 @@ return [
             'dropdown' => [
                 0 => [
                     'name' => 'Импорт',
-                    'link' => 'fm_import',
+                    'link' => 'admin/file-manager/import',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
                 1 => [
                     'name' => 'Экспорт',
-                    'link' => 'fm_export',
+                    'link' => 'admin/file-manager/export',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                /*
                 2 => [
                     'name' => 'Настройки',
-                    'link' => 'fm_setting',
+                    'link' => 'admin/file-manager/setting',
                     'type' => 'item',
                     'parent' => false,
                     'icon' => 'bullet',
                 ],
+                */
             ],
         ],
         /*
@@ -348,20 +350,22 @@ return [
         ],
         11 => [
             'name' => 'Компания',
-            'link' => 'company',
+            'link' => 'admin/company',
             'type' => 'item',
             'parent' => false,
             'icon' => 'ecm010',
             'dropdown' => '',
         ],
+        /*
         12 => [
             'name' => 'Общие',
-            'link' => 'settings',
+            'link' => 'admin/settings',
             'type' => 'item',
             'parent' => false,
             'icon' => 'cod001',
             'dropdown' => '',
         ],
+        */
     ],
 
     'mobile_menu' => [

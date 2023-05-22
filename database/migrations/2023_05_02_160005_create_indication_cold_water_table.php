@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('users_id'); //id пользователя
             //$table->foreign('users_id')->references('id')->on('users'); //ссылка на id пользователя
-            $table->string('indication'); //показания
+            $table->string('indication')->nullable(); //показания
             $table->timestamps(); //даты created_at и updated_at
-            $table->boolean('active');
+            $table->boolean('active')->nullable();
         });
     }
 

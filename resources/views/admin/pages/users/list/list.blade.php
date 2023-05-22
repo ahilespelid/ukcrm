@@ -4,6 +4,15 @@
 @php
     $page_title = 'Список пользователей';
 @endphp
+@if($errors->any())
+    <div class="alert alert-danger mt-4">
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     <!--begin::Toolbar-->
@@ -171,7 +180,8 @@
                                     <!--begin::Modal body-->
                                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                         <!--begin::Form-->
-                                        <form id="kt_modal_export_users_form" class="form" action="#">
+                                        <form id="kt_modal_export_users_form" class="form" action="{{ route('users.export') }}" method="GET">
+                                            @csrf
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
@@ -204,13 +214,14 @@
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Actions-->
-                                            <div class="text-center">
-                                                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Отмена</button>
+                                            <div class="text-center d-flex justify-content-between">
+                                                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Очистить</button>
                                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
                                                     <span class="indicator-label">Применить</span>
                                                     <span class="indicator-progress">Пожалуйста подождите...
                                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                                                 </button>
+                                                <a class="btn btn-danger float-end" href="{{ route('users.export') }}">Все пользователи</a>
                                             </div>
                                             <!--end::Actions-->
                                         </form>
@@ -251,7 +262,9 @@
                                     <!--begin::Modal body-->
                                     <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                                         <!--begin::Form-->
-                                        <form id="kt_modal_add_user_form" class="form" action="#">
+                                        <form id="kt_modal_add_user_form" class="form" method="POST" action="{{ route('users.store') }}">
+                                            @csrf
+
                                             <!--begin::Scroll-->
                                             <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_user_header" data-kt-scroll-wrappers="#kt_modal_add_user_scroll" data-kt-scroll-offset="300px">
                                                 <!--begin::Input group-->
@@ -260,7 +273,7 @@
                                                     <label class="required fw-bold fs-6 mb-2">Ф.И.О.</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="user_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Фамилия Инициалы" value="" />
+                                                    <input type="text" name="name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Фамилия Инициалы" value="" />
                                                     <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -270,7 +283,17 @@
                                                     <label class="required fw-bold fs-6 mb-2">Email</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="email" name="user_email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="" />
+                                                    <input type="email" name="email" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="example@domain.com" value="" />
+                                                    <!--end::Input-->
+                                                </div>
+                                                <!--end::Input group-->
+                                                <!--begin::Input group-->
+                                                <div class="fv-row mb-7">
+                                                    <!--begin::Label-->
+                                                    <label class="required fw-bold fs-6 mb-2">Пароль</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="password" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="" value="{{ Illuminate\Support\Str::random(8) }}" />
                                                     <!--end::Input-->
                                                 </div>
                                                 <!--end::Input group-->
@@ -282,55 +305,19 @@
                                                     <!--begin::Roles-->
                                                     <!--begin::Input row-->
                                                     <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
+                                                        <!--begin::select-->
                                                         <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role" type="radio" value="0" id="kt_modal_update_role_option_0" checked='checked' />
-                                                            <!--end::Input-->
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label" for="kt_modal_update_role_option_0">
-                                                                <div class="fw-bolder text-gray-800">Администратор</div>
-                                                                <div class="text-gray-600">Полные права доступа</div>
-                                                            </label>
-                                                            <!--end::Label-->
+                                                            @php
+                                                                $roles = App\Models\Role::all();
+                                                            @endphp
+                                                            <select class="form-select" aria-label="role" name="role">
+                                                                <option>Укажите роль пользователя</option>
+                                                                @foreach ( $roles as $role )
+                                                                    <option value="{{ $role->slug }}">{{ $role->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
-                                                            <!--end::Input-->
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label" for="kt_modal_update_role_option_1">
-                                                                <div class="fw-bolder text-gray-800">Менеджер</div>
-                                                                <div class="text-gray-600">Импорт / экспорт документов</div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
-                                                    </div>
-                                                    <!--end::Input row-->
-                                                    <div class='separator separator-dashed my-5'></div>
-                                                    <!--begin::Input row-->
-                                                    <div class="d-flex fv-row">
-                                                        <!--begin::Radio-->
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <!--begin::Input-->
-                                                            <input class="form-check-input me-3" name="user_role" type="radio" value="1" id="kt_modal_update_role_option_1" />
-                                                            <!--end::Input-->
-                                                            <!--begin::Label-->
-                                                            <label class="form-check-label" for="kt_modal_update_role_option_1">
-                                                                <div class="fw-bolder text-gray-800">Пользователь</div>
-                                                                <div class="text-gray-600">Доступ к личному кабинету</div>
-                                                            </label>
-                                                            <!--end::Label-->
-                                                        </div>
-                                                        <!--end::Radio-->
+                                                        <!--end::select-->
                                                     </div>
                                                     <!--end::Input row-->
                                                     <!--end::Roles-->
@@ -340,7 +327,7 @@
                                             <!--end::Scroll-->
                                             <!--begin::Actions-->
                                             <div class="text-center pt-15">
-                                                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Отмена</button>
+                                                <button type="reset" class="btn btn-light me-3" data-kt-users-modal-action="cancel">Очистить</button>
                                                 <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
                                                     <span class="indicator-label">Создать</span>
                                                     <span class="indicator-progress">Пожалуйста подождите...
@@ -367,7 +354,7 @@
                     <x-table
                         id="kt_table_users"
                         :data="[
-                            'th_title' => ['id'=>'id','name'=>'Пользователь','email'=>'email','created_at'=>'дата регистрации'],
+                            'th_title' => ['id'=>'id','name'=>'Пользователь','email'=>'email','created_at'=>'дата регистрации','role'=>'Роль'],
                             'button' => 'table.action-button-dropdown',
                             'items' => $users,
                             ]"

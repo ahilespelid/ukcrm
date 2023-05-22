@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('group_houses', function (Blueprint $table) { //группы домов
             $table->id();
             $table->timestamps();
-            $table->string('name'); //название группы
-            $table->boolean('active');
+            $table->string('name')->nullable(); //название группы
+            $table->boolean('active')->nullable();
         });
     }
 

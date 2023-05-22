@@ -16,7 +16,7 @@
             <!--begin::Contact group-->
             <div class="d-flex flex-stack">
                 <a href="#" class="fs-6 fw-bolder text-gray-800 text-hover-primary text-active-primary active">Все группы</a>
-                <div class="badge badge-light-primary">8</div>
+                <div class="badge badge-light-primary">{{ $items->count() }}</div>
             </div>
 
             @foreach ($items as $item)
@@ -42,20 +42,25 @@
         <!--begin::Separator-->
         <!--begin::Add contact group-->
         <label class="fs-6 fw-bold form-label">Новая группа</label>
-        <div class="input-group">
-            <input type="text" class="form-control form-control-solid" placeholder="Название группы" />
-            <button type="button" class="btn btn-icon btn-light">
-                <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
-                <span class="svg-icon svg-icon-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor" />
-                        <rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
-                        <rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor" />
-                    </svg>
-                </span>
-                <!--end::Svg Icon-->
-            </button>
-        </div>
+
+            <form method="POST" action="{{ route('objects.store') }}">
+                @csrf
+                <div class="input-group">
+                <input type="text" class="form-control form-control-solid" name="name" placeholder="Название группы" />
+                <button type="submit" class="btn btn-icon btn-light">
+                    <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
+                    <span class="svg-icon svg-icon-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="currentColor" />
+                            <rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="currentColor" />
+                            <rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="currentColor" />
+                        </svg>
+                    </span>
+                    <!--end::Svg Icon-->
+                </button>
+                </div>
+            </form>
+
         <!--end::Add contact group-->
         <!--begin::Separator-->
         <div class="separator my-7"></div>

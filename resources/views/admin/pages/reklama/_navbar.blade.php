@@ -1,5 +1,5 @@
 @php
-    use App\Http\Controllers\Admin\AdminController;
+    //use App\Http\Controllers\Admin\AdminController;
 
     $nav = array(
         array('title' => 'Overview', 'view' => 'account/overview'),
@@ -35,6 +35,7 @@
     </div>
     <!--end::Toolbar-->
 <!--begin::Navbar-->
+@foreach ($info as $item)
 <div class="card {{ $class }}">
     <div class="card-body pt-9 pb-0">
         <!--begin::Details-->
@@ -43,7 +44,7 @@
             <div class="me-7 mb-4">
                 <div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
                     <img src="{{ asset('assets\media\stock\600x400\img-5.jpg') }}" alt="image"/>
-                    <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-white h-20px w-20px"></div>
+                    <div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-{{ $item->active ? 'success' : 'danger' }} rounded-circle border border-4 border-white h-20px w-20px"></div>
                 </div>
             </div>
             <!--end::Pic-->
@@ -56,25 +57,21 @@
                     <div class="d-flex flex-column">
                         <!--begin::Name-->
                         <div class="d-flex align-items-center mb-2">
-                            <span class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1">Название</span>
-                            {{--
+                            <span class="text-gray-800 text-hover-primary fs-2 fw-bolder me-1">{{ $item->name }}</span>
+
                             <a href="#">
-                                {!! AdminController::getSvgIcon("icons/duotune/general/gen026.svg", "svg-icon-1 svg-icon-primary") !!}
+                                <img src="{{ asset('icons/duotune/general/gen026.svg') }}" alt=""> {{--svg-icon-1 svg-icon-primary--}}
                             </a>
-                            --}}
-                            {{--<a href="#" class="btn btn-sm btn-light-success fw-bolder ms-2 fs-8 py-1 px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">{{ __('Upgrade to Pro') }}</a>--}}
+
+                            <a href="#" class="btn btn-sm btn-light-{{ $item->active ? 'danger' : 'success' }} fw-bolder ms-2 fs-8 py-1 px-3" data-bs-toggle="modal" data-bs-target="#kt_modal_upgrade_plan">{{ $item->active ? __('Выключить') : __('Включить') }}</a>
                         </div>
                         <!--end::Name-->
 
                         <!--begin::Info-->
                         <div class="d-flex flex-wrap fw-bold fs-6 mb-4 pe-2">
-                            {{--<a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2">
-                                {!! AdminController::getSvgIcon("icons/duotune/communication/com006.svg", "svg-icon-4 me-1") !!}
-                                {{ $info['role'] }}
-                            </a>--}}
-                            <a href="mailto:{{-- $info['email'] --}}" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
-                                {!! AdminController::getSvgIcon("icons/duotune/communication/com011.svg", "svg-icon-4 me-1") !!}
-                                {{-- $info['email'] --}} email
+                            <a href="#" class="d-flex align-items-center text-gray-400 text-hover-primary mb-2">
+                                {{--!! AdminController::getSvgIcon("icons/duotune/communication/com011.svg", "svg-icon-4 me-1") !!--}}
+                                {{ $item->title }}
                             </a>
                         </div>
                         <!--end::Info-->
@@ -131,8 +128,8 @@
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <!--begin::Number-->
                                 <div class="d-flex align-items-center">
-                                    {!! AdminController::getSvgIcon("icons/duotune/arrows/arr065.svg", "svg-icon-3 svg-icon-danger me-2") !!}
-                                    <div class="fs-2 fw-bolder">2023-05-25{{-- $info['created_at'] --}}</div>
+                                    {{--!! AdminController::getSvgIcon("icons/duotune/arrows/arr065.svg", "svg-icon-3 svg-icon-danger me-2") !!--}}
+                                    <div class="fs-2 fw-bolder">{{ $item->end_at ? $item->end_at : 'бессрочно' }}</div>
                                 </div>
                                 <!--end::Number-->
 
@@ -146,8 +143,8 @@
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <!--begin::Number-->
                                 <div class="d-flex align-items-center">
-                                    {!! AdminController::getSvgIcon("icons/duotune/arrows/arr066.svg", "svg-icon-3 svg-icon-success me-2") !!}
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="34" data-kt-countup-prefix="">0</div>
+                                    {{--!! AdminController::getSvgIcon("icons/duotune/arrows/arr066.svg", "svg-icon-3 svg-icon-success me-2") !!--}}
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $item->views }}" data-kt-countup-prefix="">0</div>
                                 </div>
                                 <!--end::Number-->
 
@@ -161,8 +158,8 @@
                             <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-6 mb-3">
                                 <!--begin::Number-->
                                 <div class="d-flex align-items-center">
-                                    {!! AdminController::getSvgIcon("icons/duotune/arrows/arr066.svg", "svg-icon-3 svg-icon-success me-2") !!}
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="11" data-kt-countup-prefix="">0</div>
+                                    {{--!! AdminController::getSvgIcon("icons/duotune/arrows/arr066.svg", "svg-icon-3 svg-icon-success me-2") !!--}}
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $item->transitions }}" data-kt-countup-prefix="">0</div>
                                 </div>
                                 <!--end::Number-->
 
@@ -181,7 +178,7 @@
                     <div class="d-flex align-items-center w-200px w-sm-300px flex-column mt-3">
                         <div class="d-flex justify-content-between w-100 mt-auto mb-2">
                             <span class="fw-bold fs-6 text-gray-400">{{ __('Эффективность') }}</span>
-                            <span class="fw-bolder fs-6">{{ 11/34*100 }}%</span>
+                            <span class="fw-bolder fs-6">{{ intval($item->transitions/$item->views*100) }}%</span>
                         </div>
 
                         <div class="h-5px mx-3 w-100 bg-light mb-3">
@@ -199,5 +196,6 @@
 
     </div>
 </div>
+@endforeach
 <!--end::Navbar-->
 </div>
