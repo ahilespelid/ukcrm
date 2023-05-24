@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Licevoystchet extends Model
-{
-    protected $table = 'licevoy_stchet';
+class Licevoystchet extends Model{
+    public $timestamps = true;
+    
+    protected $table = 'licevoy_stchet', $dates = ['deleted_at'], $dateFormat = 'Y-m-d H:i:s', $fillable = ['*'], $guarded = [];
 
     /*
     protected $fillable = [
