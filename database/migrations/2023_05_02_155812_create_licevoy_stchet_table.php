@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('licevoy_stchet', function (Blueprint $table) { //лицевой счет
             $table->id();
+            $table->text('email')->nullable(); //email
             $table->text('personal_number_symbol')->nullable(); //символьный номер лицевого счета
             $table->text('personal_number')->nullable(); //номер лицевого счета
             $table->text('apartment')->nullable(); //номер квартиры
